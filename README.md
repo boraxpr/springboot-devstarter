@@ -30,3 +30,26 @@ To serve as a developer-first template where:
 ---
 
 This project represents the bare minimum sane template for modern Spring Boot development in 2025.
+
+
+
+---
+
+## Opentelemetry
+
+Download
+```sh
+curl -L -O https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar
+```
+
+Build your project
+```sh
+./mvnw clean package -DSkipTests
+```
+
+Set agent path and config file path
+```sh
+OTEL_JAVAAGENT_CONFIGURATION_FILE=telemetry.properties \
+java -javaagent:./opentelemetry-javaagent.jar \
+     -jar target/demo-0.0.1-SNAPSHOT.jar
+```
