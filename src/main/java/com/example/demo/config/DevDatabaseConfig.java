@@ -1,6 +1,6 @@
 package com.example.demo.config;
 
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.testcontainers.containers.PostgreSQLContainer;
@@ -8,7 +8,7 @@ import com.zaxxer.hikari.HikariDataSource;
 import javax.sql.DataSource;
 
 @Configuration
-@ConditionalOnMissingBean(DataSource.class)
+@ConditionalOnProperty(prefix = "spring.datasource", name = "url", matchIfMissing = true)
 public class DevDatabaseConfig {
 
     @Bean
